@@ -41,8 +41,8 @@ setup(
         'bdist_wheel': {'universal': True}
     },
     entry_points={
-        'console_scripts': ['terminal_velocity=terminal_velocity:main',
-                            'terminal-velocity=terminal_velocity:main'],
+        'console_scripts': ['terminal_velocity=terminal_velocity.terminal_velocity:main',
+                            'terminal-velocity=terminal_velocity.terminal_velocity:main'],
     }
 
 )
