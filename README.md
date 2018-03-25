@@ -1,5 +1,7 @@
 # Terminal Velocity
 
+![build status](https://travis-ci.org/jongracecox/terminal_velocity.svg?branch=master)
+
 Terminal Velocity is a fast note-taking app for the UNIX terminal, that
 focuses on letting you create or find a note as quickly and easily as
 possible, then uses your `$EDITOR` to open and edit the note. It is
