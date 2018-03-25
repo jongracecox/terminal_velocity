@@ -1,14 +1,29 @@
 #!/usr/bin/env python2
 """A fast note-taking app for the UNIX terminal"""
-
-import argparse
+from __future__ import print_function
 import ConfigParser
+import argparse
 import os
 import logging
 import logging.handlers
 import sys
 
-import terminal_velocity.urwid_ui as urwid_ui
+#import terminal_velocity.urwid_ui as urwid_ui
+import urwid_ui
+
+from git import get_git_project_config, git_project_is_configured, fetch_changes, push_changes
+
+
+def startup():
+    """Function to run before starting up."""
+    if git_project_is_configured():
+        fetch_changes()
+
+
+def shutdown():
+    """Function to run after shutdown."""
+    if git_project_is_configured():
+        push_changes()
 
 
 def main():
@@ -96,7 +111,7 @@ the default default will be used"""
     args.exclude = exclude
 
     if args.print_config:
-        print args
+        print(args)
         sys.exit()
 
     logger = logging.getLogger("terminal_velocity")
@@ -117,11 +132,17 @@ the default default will be used"""
 
     logger.debug(args)
 
+    # Run the startup hook
+    startup()
+
     try:
         urwid_ui.launch(notes_dir=args.notes_dir, editor=args.editor,
                 extension=args.extension, extensions=args.extensions,
                 exclude=args.exclude)
     except KeyboardInterrupt:
+        # Run the shutdown hook
+        shutdown()
+
         # Silence KeyboardInterrupt tracebacks on ctrl-c.
         sys.exit()
 

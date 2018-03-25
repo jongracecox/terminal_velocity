@@ -7,16 +7,22 @@ heavily inspired by the OS X app [Notational
 Velocity](http://notational.net/). For screenshots and features, see the
 [Terminal Velocity website](http://vhp.github.com/terminal_velocity).
 
+This is a fork of the original project, which adds the ability to
+automatically pull and push your Notes changes to a Git project.
+When you start terminal velocity it will automatically pull from the
+configured git project, and when you exit it will automatically push.
+
 ## Installation
 
 ### pip - Python package manager
 To install Terminal Velocity, run:
 
-    pip install terminal_velocity
+    pip install terminal-velocity-git
 
-Then to launch it just run:
+Then to launch it just run one of the following commands:
 
     terminal_velocity
+    terminal-velocity
 
 To use a different notes directory, run:
 
@@ -53,6 +59,34 @@ Clone the repository from:
 Move into terminal_velocity directory you just cloned and run the following:
 
     sudo python setup.py install
+
+## Sync your notes to Git
+
+You will need:
+
+* A GitHub or GitLab project (for free private projects GitLab is recommended)
+* The clone URL of the git project
+
+Before setting this up **!!take a backup of your existing Notes directory!!**.
+
+Create file `~/.git_notes_project.yaml`, and add the following:
+
+```yaml
+project url: <git-project-url>
+```
+
+Optionally you can change the directory that `terminal-velocity` uses for notes
+by adding the following to the file:
+
+```yaml
+project directory: ~/My-Other-Notes-Directory
+```
+
+Note that this configuration does not affect the terminal velocity configuration,
+only the Git project management add-on.
+
+When you start `terminal-velocity` it will automatically initialise the Git project
+within your Notes directory
 
 ## Releasing to PyPi
 

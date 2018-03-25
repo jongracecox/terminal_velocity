@@ -1,0 +1,28 @@
+language: python
+python:
+- '2.7'
+- '3.5'
+- '3.6'
+install:
+- pip install -U setuptools pip -r build-requirements.txt
+script:
+- echo "Oh, for some tests..."
+deploy:
+  matrix:
+  - provider: pypi
+    user: jongracecox
+    password:
+      secure: EUSDNBpLbALRJsOeblzxvSr6G7wJhe4xP4dD9qSVQkvmOBB1FG5mKOjfi5UM8LfSpa53M6Dp85Iq3hh69fbzmZWdVMSGsHr3cluQmr2/0PmZ96hRBtXwE0jqY5beRlWy9tfq/zGpSmAcueBSWSG9p0jK23NHUh/t+VIuvv5q9J6dukb9Dv8NLXb8CMJ4QM2xvoE0Db/WHgA+R707DiDV851Z2K7GR/Y/LJf96McSWCaPomqXqPf6BPwDi2Yx9JN2S2ebsPnk6O9lp0GQU2ArRVqujMfUlLcx6otN2lbut/AzeWAG4zYdbz481qPjGBYJX8h8UuWO5ljPk/+OGn2D7YL0eWDMb8aAlEiBbR5UVCDAS4UcOjraEFlbh4hJyvsd+bOqpgmjlqcrpLnSMfPqHTRQBhnBUNL4t6BLuIN1Xgza9WNHJs08XgfcFjQuMjwHWu8ayNJ87kQlYEGGGzBpi2qtd1+mypQZz94V06dtk62cU/6TP9X74nMI6yw/0hdwETUMnALf/rENeviFfn2pS4WySLl28184+cDmdDAZJlO3n8PvRQVk0LITqx9AD9fiE4ikoAAfnlhkd7P6bJ5dk3T0IZybI5UV50RqWiTxeG2Ote1wckDRT9Gjy+wwxT/qPn9qfNLXiX0p8R3bcg0RhpsnE5g1+xZqXeQPBvk62Mw=
+    distributions: sdist bdist_wheel
+    on:
+      tags: true
+      all_branches: true
+      python: '3.6'
+  - provider: pypi
+    user: jongracecox
+    password:
+      secure: EUSDNBpLbALRJsOeblzxvSr6G7wJhe4xP4dD9qSVQkvmOBB1FG5mKOjfi5UM8LfSpa53M6Dp85Iq3hh69fbzmZWdVMSGsHr3cluQmr2/0PmZ96hRBtXwE0jqY5beRlWy9tfq/zGpSmAcueBSWSG9p0jK23NHUh/t+VIuvv5q9J6dukb9Dv8NLXb8CMJ4QM2xvoE0Db/WHgA+R707DiDV851Z2K7GR/Y/LJf96McSWCaPomqXqPf6BPwDi2Yx9JN2S2ebsPnk6O9lp0GQU2ArRVqujMfUlLcx6otN2lbut/AzeWAG4zYdbz481qPjGBYJX8h8UuWO5ljPk/+OGn2D7YL0eWDMb8aAlEiBbR5UVCDAS4UcOjraEFlbh4hJyvsd+bOqpgmjlqcrpLnSMfPqHTRQBhnBUNL4t6BLuIN1Xgza9WNHJs08XgfcFjQuMjwHWu8ayNJ87kQlYEGGGzBpi2qtd1+mypQZz94V06dtk62cU/6TP9X74nMI6yw/0hdwETUMnALf/rENeviFfn2pS4WySLl28184+cDmdDAZJlO3n8PvRQVk0LITqx9AD9fiE4ikoAAfnlhkd7P6bJ5dk3T0IZybI5UV50RqWiTxeG2Ote1wckDRT9Gjy+wwxT/qPn9qfNLXiX0p8R3bcg0RhpsnE5g1+xZqXeQPBvk62Mw=
+    distributions: sdist bdist_wheel
+    on:
+      branch: master
+      python: '3.6'

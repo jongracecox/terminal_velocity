@@ -3,6 +3,7 @@
 *~
 MANIFEST
 dist/*
-terminal_velocity.egg-info/
+*.egg-info/
 build
 build/*
+.idea/
