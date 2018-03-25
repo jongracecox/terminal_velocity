@@ -95,9 +95,17 @@ def fetch_changes():
 def project_directory_changed():
     """Return True if project directory changed."""
     git = sh.Command('git')
-    changes = git('diff-index', '--name-only', 'HEAD', '--', _cwd=get_local_project_directory())
-    if len(changes):
+
+    # Check for diffs in existing files.
+    diff_changes = git('diff-index', '--name-only', 'HEAD', '--', _cwd=get_local_project_directory())
+    if len(diff_changes):
         return True
+
+    # Check for new files.
+    status_changes = git('status', '--short', _cwd=get_local_project_directory())
+    if len(status_changes):
+        return True
+
     return False
 
 
