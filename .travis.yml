@@ -6,6 +6,7 @@ install:
 - pip install -U setuptools pip -r build-requirements.txt
 script:
 - echo "Oh, for some tests..."
+- mister-bump --verbose
 deploy:
 - provider: pypi
   user: jongracecox
