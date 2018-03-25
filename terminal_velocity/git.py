@@ -125,7 +125,7 @@ def push_changes(commit_message=None):
     try:
         git('add', '-A', _cwd=get_local_project_directory())
         git('commit', '-m', commit_message, _cwd=get_local_project_directory())
-        git('push', _cwd=get_local_project_directory())
+        git('push', 'origin', 'master', _cwd=get_local_project_directory())
     except sh.ErrorReturnCode_128 as e:
         print('Failed to push local project changes: %s' % e.stderr)
         raw_input('Press ENTER to continue...')
